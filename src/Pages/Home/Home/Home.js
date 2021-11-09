@@ -1,11 +1,10 @@
-import { Button } from '@mui/material';
 import React from 'react';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Home = () => {
     return (
         <div>
-            <h1>This is home</h1>
-            <Button variant="contained">Hello WOrld</Button>
+            <Navigation></Navigation>
         </div>
     );
 };
