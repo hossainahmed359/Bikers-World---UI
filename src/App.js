@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login/Login';
 import Purchase from './Pages/Purchase/Purchase';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import Register from './Pages/Login/Register/Register';
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/register">
+              <Register></Register>
             </Route>
           </Switch>
         </Router>

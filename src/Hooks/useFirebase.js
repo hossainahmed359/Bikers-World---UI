@@ -46,13 +46,14 @@ const useFirebase = () => {
             .then((result) => {
                 setError(null)
                 // Checking registration success 
-                if (result.email) {
+                if (result?.user?.email) {
                     // Updating Profile
                     updateProfile(auth.currentUser, {
                         displayName: name
                     }).then(() => {
+                        // console.log(user)
                         // Setting User Name on Update Success || Not waiting for observer
-                        const newUser = { email: email, displayName: name }
+                        const newUser = { displayName: name, email: email }
                         setUser(newUser)
                         //
                     }).catch((error) => {
@@ -105,6 +106,7 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+                console.log(user)
                 // ...
             } else {
                 // User is signed out
@@ -120,6 +122,7 @@ const useFirebase = () => {
     return {
         user,
         error,
+        setError,
         isLoading,
         handleGoogleSignIn,
         handleEmailRegistration,
