@@ -6,7 +6,7 @@ import './Navigation.css'
 const Navigation = () => {
     return (
         <>
-            <Navbar className="navigation" expand="lg">
+            <Navbar className="navigation border border-bottom " expand="lg">
                 <Container fluid>
                     <NavLink to="/home">Bikers World</NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -16,8 +16,6 @@ const Navigation = () => {
                             <NavLink to="/purchase">Purchase</NavLink>
                             <NavLink to="/dashboard">Dashboard</NavLink>
                             <NavLink to="/login">Login</NavLink>
-
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

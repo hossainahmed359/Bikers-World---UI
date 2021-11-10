@@ -9,7 +9,7 @@ import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App text-fonts">
       <Router>
         <Switch>
           <Route exact path="/">
