@@ -1,20 +1,10 @@
 .product-card{
     border : none;
-    transition: 1s;
-    box-shadow: 10px 10px 20px rgb(241, 241, 241);
+    transition: 0.6s ease-in-out;
+    box-shadow: 5px 5px 15px rgb(241, 241, 241);
 }
 .product-card:hover{
-    box-shadow: 10px 10px 20px 5px rgb(221, 221, 221);
+    box-shadow: 5px 5px 20px 10px rgb(221, 221, 221);
+    transform: scale(1.05);
 }
-.parentDiv{
-    overflow: hidden;
-}
-.product-card img {
-    display: block;
-    transition: 1s ease-in-out;
-}
-.product-card img:hover{
-    position: relative;
-    transform: scale(1.25);
-   
-}
+
