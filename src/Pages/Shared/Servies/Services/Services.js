@@ -8,11 +8,11 @@ import SingleService from '../SingleService/SingleService';
 const Services = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('./products.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
-    console.log(products)
+
     return (
         <div>
             <ServicesHeader></ServicesHeader>
@@ -20,7 +20,7 @@ const Services = () => {
                 <Row xs={1} md={2} lg={3} className="g-5 my-5">
                     {products.map(product => products.indexOf(product) < 6 &&
                         <SingleService
-                            key={products[product]}
+                            key={product._id}
                             product={product}
                         ></SingleService>)}
                 </Row>
