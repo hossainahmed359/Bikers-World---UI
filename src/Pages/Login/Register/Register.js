@@ -25,7 +25,7 @@ const Register = () => {
     const handleOnSubmit = e => {
         e.preventDefault();
         if (loginData.password === loginData.password2) {
-            console.log(loginData)
+            // console.log(loginData)
             handleEmailRegistration(loginData.name, loginData.email, loginData.password)
             e.target.reset()
         }

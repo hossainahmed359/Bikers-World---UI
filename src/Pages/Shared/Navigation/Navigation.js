@@ -18,8 +18,7 @@ const Navigation = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <NavLink to="/explore">Explore</NavLink>
-                            <NavLink to="/purchase">Purchase</NavLink>
-                            <NavLink to="/dashboard">Dashboard</NavLink>
+                            {user.email && <NavLink to="/dashboard">Dashboard</NavLink>}
                             {user.displayName &&
                                 <NavLink
                                     className="text-dark"

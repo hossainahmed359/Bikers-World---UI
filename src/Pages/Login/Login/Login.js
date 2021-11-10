@@ -25,7 +25,7 @@ const Login = () => {
     const handleOnSubmit = e => {
         e.preventDefault();
         handleEmailSignIn(loginData.email, loginData.password)
-        console.log(loginData)
+        // console.log(loginData)
         e.target.reset()
     }
 
