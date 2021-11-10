@@ -12,7 +12,7 @@ const useFirebase = () => {
     // States
     const [user, setUser] = useState({});
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     // AUTH
@@ -24,10 +24,12 @@ const useFirebase = () => {
 
 
     // Google Sign In
-    const handleGoogleSignIn = () => {
+    const handleGoogleSignIn = (location, history) => {
         setIsLoading(true);
         signInWithPopup(auth, googleProvider)
             .then((result) => {
+                const destination = location?.state?.from || '/';
+                history.push(destination);
                 setError(null);
                 // const user = result.user;
                 // ...
@@ -40,7 +42,7 @@ const useFirebase = () => {
 
 
     // Email Registration and Update Name
-    const handleEmailRegistration = (name, email, password) => {
+    const handleEmailRegistration = (name, email, password, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
@@ -51,10 +53,10 @@ const useFirebase = () => {
                     updateProfile(auth.currentUser, {
                         displayName: name
                     }).then(() => {
-                        // console.log(user)
                         // Setting User Name on Update Success || Not waiting for observer
-                        const newUser = { displayName: name, email: email }
-                        setUser(newUser)
+                        const newUser = { displayName: name, email: email };
+                        setUser(newUser);
+                        history.push('/')
                         //
                     }).catch((error) => {
                         setError(error.message)
@@ -69,11 +71,13 @@ const useFirebase = () => {
 
 
     // Email Sign In
-    const handleEmailSignIn = (email, password) => {
+    const handleEmailSignIn = (email, password, location, history) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 setError(null)
+                const destination = location?.state?.from || '/';
+                history.push(destination);
                 // Sign in success
                 // const user = result.user;
 
@@ -102,11 +106,9 @@ const useFirebase = () => {
 
     // Observer || User Login || User Logout
     useEffect(() => {
-        setIsLoading(true)
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
-                console.log(user)
                 // ...
             } else {
                 // User is signed out
@@ -114,6 +116,7 @@ const useFirebase = () => {
             }
             setIsLoading(false);
         });
+        return unsubscribed;
     }, []);
 
 

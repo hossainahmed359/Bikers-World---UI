@@ -6,6 +6,7 @@ import './Navigation.css'
 
 const Navigation = () => {
 
+    // Firebase
     const { user, handleSignOut } = useAuth();
 
 

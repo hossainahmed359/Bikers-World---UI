@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, FormControl, InputGroup, Button, Spinner } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import Navigation from '../../Shared/Navigation/Navigation';
 
@@ -8,6 +8,10 @@ const Login = () => {
 
     // Firebase
     const { handleEmailSignIn, handleGoogleSignIn, isLoading, error } = useAuth();
+
+    // History and Location
+    const location = useLocation();
+    const history = useHistory();
 
     // setting user input data
     const [loginData, setLoginData] = useState({});
@@ -24,14 +28,14 @@ const Login = () => {
     // Handle Form Submit
     const handleOnSubmit = e => {
         e.preventDefault();
-        handleEmailSignIn(loginData.email, loginData.password)
+        handleEmailSignIn(loginData.email, loginData.password, location, history)
         // console.log(loginData)
         e.target.reset()
     }
 
     // Google signIn
     const useGoogleSignIn = () => {
-        handleGoogleSignIn();
+        handleGoogleSignIn(location, history);
     }
 
     return (
