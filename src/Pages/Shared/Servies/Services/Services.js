@@ -3,6 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import ServicesHeader from '../ServicesHeader/ServicesHeader';
 import SingleService from '../SingleService/SingleService';
 
+/// id needs to be added from database
 
 const Services = () => {
     const [products, setProducts] = useState([]);

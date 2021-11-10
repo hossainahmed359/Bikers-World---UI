@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login/Login';
 import Purchase from './Pages/Purchase/Purchase';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
+
 function App() {
   return (
     <div className="App text-fonts">
@@ -21,7 +22,7 @@ function App() {
           <Route path="/explore">
             <Explore></Explore>
           </Route>
-          <Route path="/purchase">
+          <Route path="/purchase/:_id">
             <Purchase></Purchase>
           </Route>
           <Route path="/dashboard">
