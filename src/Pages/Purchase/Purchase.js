@@ -8,10 +8,12 @@ import './Purchase.css'
 
 const Purchase = () => {
     const { product_id } = useParams();
-    const { user } = useAuth({})
+    const { user } = useAuth({});
+
 
     // Set Load Data in the state
-    const [singleProduct, setSingleProduct] = useState({})
+    const [singleProduct, setSingleProduct] = useState({});
+
 
     // Get Single Product Details
     useEffect(() => {
@@ -19,6 +21,8 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => setSingleProduct(data))
     }, []);
+
+
 
 
 

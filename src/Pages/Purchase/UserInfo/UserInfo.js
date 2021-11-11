@@ -1,16 +1,55 @@
-import { fontFamily } from '@mui/system';
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+
+
 
 const UserInfo = ({ user, singleProduct }) => {
 
-    console.log(singleProduct);
-    console.log(user);
+    // console.log(singleProduct);
+    // console.log(user);
 
+    const [userInfo, setUserInfo] = useState({ name: user.displayName, email: user.email });
 
     const handleOnBlur = e => {
-        // console.log(e.targe.value)
+        const field = e.target.name;
+        const value = e.target.value;
+        const updatedUser = { ...userInfo };
+        updatedUser[field] = value;
+        setUserInfo(updatedUser);
+        console.log(userInfo)
     }
+
+    // Handle Button Submit
+    const handleOnSubmit = e => {
+        e.preventDefault();
+        const cart = { productId: singleProduct._id, status: 'pending' }
+        const order = { ...userInfo, cart };
+        console.log(order)
+
+
+        // Send Data to the server
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.insertedId) {
+                    alert('Product added to the cart');
+                    e.target.reset();
+                }
+            })
+    }
+
+
+
+    // font awesome
+    const cartIcon = <FontAwesomeIcon icon={faCartPlus} />
 
     return (
         <div className="mx-auto">
@@ -18,7 +57,7 @@ const UserInfo = ({ user, singleProduct }) => {
                 className="border-0">
                 <Card.Body>
                     <Card.Title className="fs-3 text-start">User Details</Card.Title>
-                    <form style={{ fontFamily: 'roboto' }}>
+                    <form onSubmit={handleOnSubmit} style={{ fontFamily: 'roboto' }}>
                         <InputGroup className="my-3">
                             <FormControl
                                 className="py-3"
@@ -61,10 +100,10 @@ const UserInfo = ({ user, singleProduct }) => {
                             <FormControl
                                 className="py-3"
                                 onBlur={handleOnBlur}
-                                name="address"
+                                name="location"
                                 type="text"
                                 placeholder="Your Loaction"
-                                aria-label="address"
+                                aria-label="location"
                                 aria-describedby="basic-addon1"
                                 required
                             />
@@ -74,7 +113,7 @@ const UserInfo = ({ user, singleProduct }) => {
                             type="submit"
                             variant="danger"
                             className="w-100 px-3 py-3 my-2 border rounded-pill"
-                        >
+                        ><span className="px-2">{cartIcon}</span>
                             Add To Cart
                         </Button>
                     </form>
