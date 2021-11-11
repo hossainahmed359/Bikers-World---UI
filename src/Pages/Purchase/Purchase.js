@@ -26,21 +26,29 @@ const Purchase = () => {
             <Navigation></Navigation>
             <div className="my-5">
                 <Container>
-                    <Row xs={1} md={2} className="g-1">
-                        <Col sm={12} md={6} lg={4}>
-                            <Card className="border-0">
+                    <Row xs={1} md={2} className="d-flex align-items-center" >
+                        <Col sm={12} md={6} lg={4} className="">
+                            <Card className="border-0 d-flex align-item-center">
                                 <Card.Img variant="top" src={singleProduct.image} />
-                                <Card.Body className="text-start">
-                                    <Card.Title className="fs-3">{singleProduct.name}</Card.Title>
-                                    <Card.Text className="fs-2" style={{ color: '#E52727 ' }}>${singleProduct.price}</Card.Text>
-                                    <Card.Text className="fs-5" style={{ fontFamily: "'roboto", textAlign: 'justify' }}>
-                                        {singleProduct.description}
-                                    </Card.Text>
-                                </Card.Body>
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={8}>
+                            <Col lg={12}>
+
+                            </Col>
                             <Col className="mx-auto" lg={10}>
+                                <Card className="border-0">
+
+                                    <Card.Body >
+                                        <Card.Title className="fs-1">{singleProduct.name}</Card.Title>
+                                        <div className="text-start">
+                                            <Card.Text className="fs-2" style={{ color: '#E52727 ' }}>${singleProduct.price}</Card.Text>
+                                            <Card.Text className="" style={{ fontFamily: "'roboto", textAlign: 'justify' }}>
+                                                {singleProduct.description}
+                                            </Card.Text>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
                                 <UserInfo
                                     user={user}
                                     singleProduct={singleProduct}

@@ -17,9 +17,9 @@ const UserInfo = ({ user, singleProduct }) => {
             <Card
                 className="border-0">
                 <Card.Body>
-                    <Card.Title className="fs-1">User Details</Card.Title>
+                    <Card.Title className="fs-3 text-start">User Details</Card.Title>
                     <form style={{ fontFamily: 'roboto' }}>
-                        <InputGroup className="my-4">
+                        <InputGroup className="my-3">
                             <FormControl
                                 className="py-3"
                                 onBlur={handleOnBlur}
@@ -32,7 +32,7 @@ const UserInfo = ({ user, singleProduct }) => {
                                 required
                             />
                         </InputGroup>
-                        <InputGroup className="my-4">
+                        <InputGroup className="my-3">
                             <FormControl
                                 className="py-3"
                                 onBlur={handleOnBlur}
@@ -45,7 +45,7 @@ const UserInfo = ({ user, singleProduct }) => {
                                 required
                             />
                         </InputGroup>
-                        <InputGroup className="my-4">
+                        <InputGroup className="my-3">
                             <FormControl
                                 className="py-3"
                                 onBlur={handleOnBlur}
@@ -57,7 +57,7 @@ const UserInfo = ({ user, singleProduct }) => {
                                 required
                             />
                         </InputGroup>
-                        <InputGroup className="my-4">
+                        <InputGroup className="my-3">
                             <FormControl
                                 className="py-3"
                                 onBlur={handleOnBlur}
