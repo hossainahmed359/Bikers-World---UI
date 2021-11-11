@@ -3,6 +3,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import Navigation from '../Shared/Navigation/Navigation';
+import UserInfo from './UserInfo/UserInfo';
 
 const Purchase = () => {
     const { product_id } = useParams();
@@ -17,9 +18,6 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => setSingleProduct(data))
     }, []);
-
-    console.log(singleProduct);
-    console.log(user)
 
 
 
@@ -42,17 +40,11 @@ const Purchase = () => {
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={8}>
-                            <Col>
-                                <Card className="border-0">
-                                    <Card.Img variant="top" src="holder.js/100px160" />
-                                    <Card.Body>
-                                        <Card.Title>Card title</Card.Title>
-                                        <Card.Text style={{ textAlign: 'justify' }}>
-                                            This is a longer card with supporting text below as a natural
-                                            lead-in to additional content. This content is a little bit longer.
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
+                            <Col className="mx-auto" lg={10}>
+                                <UserInfo
+                                    user={user}
+                                    singleProduct={singleProduct}
+                                ></UserInfo>
                             </Col>
                         </Col>
 
