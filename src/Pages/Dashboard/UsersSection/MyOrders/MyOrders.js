@@ -12,6 +12,10 @@ const MyOrders = ({ userEmail }) => {
     const [allOrders, setAllOrders] = useState([]);
 
 
+    // Delete Confirmation to load data again
+    const [deleteConfirm, setDeleteConfirm] = useState(false);
+
+
     // Find All Orders 
     useEffect(() => {
         fetch(`http://localhost:5000/findOrder/${userEmail}`)
@@ -19,13 +23,30 @@ const MyOrders = ({ userEmail }) => {
             .then(data => {
                 setAllOrders(data);
             });
-    }, []);
+    }, [deleteConfirm]);
+
+
 
     // Cancel Order
     const handleCancelOrder = orderId => {
-        console.log(orderId)
+        setDeleteConfirm(false);
+        const proceed = window.confirm('Are you sure you want to cancel the order ?')
+        if (proceed) {
+            fetch(`http://localhost:5000/deleteOrder/${orderId}`, {
+                method: 'DELETE',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const confirmation = window.alert('Order Cancelled');
+                        setDeleteConfirm(true)
+                    }
+                })
+        }
     }
 
+
+    // Return
     return (
         <Container fixed>
             <h1>This is My Orders {userEmail}</h1>

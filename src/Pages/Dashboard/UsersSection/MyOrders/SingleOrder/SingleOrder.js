@@ -54,7 +54,7 @@ const SingleOrder = ({ order, handleCancelOrder }) => {
                 <CardContent>
                     <Box sx={{ textAlign: 'left', mb: '5' }}>
                         <Typography variant="h5">{name}</Typography>
-                        <Typography variant="h5" color="#E52727">${price}</Typography>
+                        <Typography variant="h5" style={{ margin: '10px 0' }} color="#E52727">${price}</Typography>
                         <Typography variant="body2" color="">
                             {description?.slice(0, 120)}...
                         </Typography>
