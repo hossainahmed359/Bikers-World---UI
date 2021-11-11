@@ -30,6 +30,9 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+import Payment from '../UsersSection/Payment/Payment';
+import MyOrders from '../UsersSection/MyOrders/MyOrders';
+import Review from '../UsersSection/Review/Review';
 
 
 // Drawer Width
@@ -138,6 +141,11 @@ const Dashboard = () => {
                     sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
                 >
                     <Toolbar />
+
+
+
+
+                    {/* *********************** General User Links *********************** */}
                     {/* 
                     <li><Link to={`${url}`}>Default</Link></li>
                     <li><Link to={`${url}/payment`}>Pay</Link></li>
@@ -145,15 +153,44 @@ const Dashboard = () => {
                     <li><Link to={`${url}/review`}>Review</Link></li>
                     <li><Button onClick={handleSignOut} variant="outline-danger">Log Out</Button></li>
                         */}
+
+
+
+
+                    {/* *********************** Admin Links *********************** */}
+                    {/* 
+                    <li><Link to={`${url}`}>Default</Link></li>
+                    <li><Link to={`${url}/manageAllOrders`}>Manage All Orders</Link></li>
+                    <li> <Link to={`${url}/addProduct`}>Add A Product</Link></li>
+                    <li><Link to={`${url}/makeAdmin`}>Make Admin</Link></li>
+                    <li><Link to={`${url}/mangeProducts`}>Manage Products</Link></li>
+                    <li><Button onClick={handleSignOut} variant="outline-danger">Log Out</Button></li>
+                        */}
+
+
+
+
+                    {/* ***************************** General User Pages  ******************************/}
                     <div>
-                        <Route exact path="/">Home</Route>
-                        <Route path={`${url}/payment`}>Payment Coming Soon</Route>
-                        <Route path={`${url}/myOrders`}>Manage Orders</Route>
-                        <Route path={`${url}/review`}>Review Website</Route>
+                        <Route exact path={path}>Please Select something</Route>
+                        <Route path={`${url}/payment`}><Payment></Payment></Route>
+                        <Route path={`${url}/myOrders`}><MyOrders userEmail={user.email}></MyOrders></Route>
+                        <Route path={`${url}/review`}><Review></Review></Route>
                     </div>
-                    <Typography paragraph>
-                        hello
-                    </Typography>
+
+
+
+
+
+                    {/* ***************************** Admin Pages  ******************************/}
+                    {/*  <div>
+                        <Route exact path="/">Home</Route>
+                        <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>
+                        <Route path={`${url}/addProduct`}>Add A Product</Route>
+                        <Route path={`${url}/makeAdmin`}>Make Admin</Route>
+                        <Route path={`${url}/mangeProducts`}>Manage Products</Route>
+                    </div> */}
+
 
                 </Box>
             </Box>
