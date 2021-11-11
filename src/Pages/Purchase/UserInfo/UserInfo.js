@@ -7,9 +7,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 const UserInfo = ({ user, singleProduct }) => {
 
-    // console.log(singleProduct);
-    // console.log(user);
-
+    // User State
     const [userInfo, setUserInfo] = useState({ name: user.displayName, email: user.email });
 
     const handleOnBlur = e => {
@@ -18,7 +16,7 @@ const UserInfo = ({ user, singleProduct }) => {
         const updatedUser = { ...userInfo };
         updatedUser[field] = value;
         setUserInfo(updatedUser);
-        console.log(userInfo)
+        // console.log(userInfo)
     }
 
     // Handle Button Submit
@@ -26,7 +24,7 @@ const UserInfo = ({ user, singleProduct }) => {
         e.preventDefault();
         const cart = { productId: singleProduct._id, status: 'pending' }
         const order = { ...userInfo, cart };
-        console.log(order)
+        // console.log(order)
 
 
         // Send Data to the server
