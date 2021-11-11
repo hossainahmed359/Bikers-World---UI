@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import Navigation from '../Shared/Navigation/Navigation';
 import UserInfo from './UserInfo/UserInfo';
+import './Purchase.css'
 
 const Purchase = () => {
     const { product_id } = useParams();
@@ -29,7 +30,7 @@ const Purchase = () => {
                     <Row xs={1} md={2} className="d-flex align-items-center" >
                         <Col sm={12} md={6} lg={4} className="">
                             <Card className="border-0 d-flex align-item-center">
-                                <Card.Img variant="top" src={singleProduct.image} />
+                                <Card.Img className="product-banner" variant="top" src={singleProduct.image} />
                             </Card>
                         </Col>
                         <Col sm={12} md={6} lg={8}>
