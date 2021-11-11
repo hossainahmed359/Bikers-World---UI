@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
-/* import { Card, Col, Container, Button } from 'react-bootstrap'; */
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import Button from '@mui/material/Button';
+import './SingleOrder.css'
 
 // Material UI
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
 
 
 
 
 // Main Function
-const SingleOrder = ({ order }) => {
+const SingleOrder = ({ order, handleCancelOrder }) => {
+
+    // Order ID
+    const orderId = order._id;
+
+    // Product ID and Status
     const productId = order?.cart?.productId;
-    // console.log(productId)
+    const status = order?.cart?.status;
+
     // Set Matheced Product
     const [product, setProduct] = useState([]);
 
@@ -27,20 +34,17 @@ const SingleOrder = ({ order }) => {
             .then(data => setProduct(data));
     }, []);
 
-    console.log(product)
-    const { _id, image, name, price, description } = product;
+    const { image, name, price, description } = product;
 
 
     // font awesome
-    const cartIcon = <FontAwesomeIcon icon={faCartPlus} />
-
-
+    const deleteIcon = <FontAwesomeIcon icon={faTrash} />
 
 
 
     return (
         <>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card className="single-order-card" sx={{ maxWidth: 345, my: 2 }}>
                 <CardMedia
                     component="img"
                     height="100%"
@@ -48,11 +52,17 @@ const SingleOrder = ({ order }) => {
                     alt="Paella dish"
                 />
                 <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                        This impressive paella is a perfect party dish and a fun meal to cook
-                        together with your guests. Add 1 cup of frozen peas along with the mussels,
-                        if you like.
-                    </Typography>
+                    <Box sx={{ textAlign: 'left', mb: '5' }}>
+                        <Typography variant="h5">{name}</Typography>
+                        <Typography variant="h5" color="#E52727">${price}</Typography>
+                        <Typography variant="body2" color="">
+                            {description?.slice(0, 120)}...
+                        </Typography>
+                    </Box>
+                    <Box style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+                        <> <Button onClick={() => handleCancelOrder(orderId)} variant="contained" color="error" ><span style={{ marginRight: '5px' }}>{deleteIcon}</span> Cancel</Button></>
+                        <><Typography variant="h6" color="green">{status}</Typography></>
+                    </Box>
                 </CardContent>
             </Card>
         </>

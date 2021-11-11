@@ -21,6 +21,10 @@ const MyOrders = ({ userEmail }) => {
             });
     }, []);
 
+    // Cancel Order
+    const handleCancelOrder = orderId => {
+        console.log(orderId)
+    }
 
     return (
         <Container fixed>
@@ -33,6 +37,7 @@ const MyOrders = ({ userEmail }) => {
                             <SingleOrder
                                 key={order._id}
                                 order={order}
+                                handleCancelOrder={handleCancelOrder}
                             ></SingleOrder>
 
                         </Grid>

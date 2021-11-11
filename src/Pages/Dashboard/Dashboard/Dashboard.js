@@ -44,7 +44,7 @@ const Dashboard = () => {
 
     // Load Signed In User
     const { user, handleSignOut } = useAuth();
-    console.log(user)
+    // console.log(user)
 
     // const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);

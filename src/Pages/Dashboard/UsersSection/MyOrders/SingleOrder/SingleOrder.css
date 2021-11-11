@@ -1,0 +1,6 @@
+.single-order-card{
+    transition: 0.5s;
+}
+.single-order-card:hover{
+    box-shadow: -1px 5px 15px  rgba(68, 68, 68, 0.534);
+}
