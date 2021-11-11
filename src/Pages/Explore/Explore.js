@@ -20,7 +20,6 @@ const Explore = () => {
     const custombg = {
         background: `url("https://i.ibb.co/xCQSRXW/servies-banner.jpg")`,
         height: '150px'
-
     }
 
     return (
