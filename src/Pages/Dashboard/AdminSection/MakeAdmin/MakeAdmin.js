@@ -3,9 +3,13 @@ import TextField from '@mui/material/TextField';
 import { Container } from 'react-bootstrap';
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
+import useAuth from '../../../../Hooks/useAuth';
 
 
 const MakeAdmin = () => {
+
+    // Get User
+    const { user } = useAuth();
 
     // State to store email
     const [requestEmail, setRequestEmail] = useState({})
@@ -26,6 +30,7 @@ const MakeAdmin = () => {
         fetch('http://localhost:5000/makeAdmin', {
             method: 'PUT',
             headers: {
+                admin_email: `${user.email}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(requestEmail)
@@ -34,6 +39,10 @@ const MakeAdmin = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     window.alert('Admin succssfully created');
+                    e.target.reset();
+                }
+                if (data === 'unauthorized') {
+                    window.alert('You are not authorized to make admin');
                     e.target.reset();
                 }
             })
