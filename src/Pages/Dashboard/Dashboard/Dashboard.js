@@ -27,6 +27,7 @@ import Payment from '../UsersSection/Payment/Payment';
 import MyOrders from '../UsersSection/MyOrders/MyOrders';
 import Review from '../UsersSection/Review/Review';
 import Button from '@mui/material/Button';
+import MakeAdmin from '../AdminSection/MakeAdmin/MakeAdmin';
 
 
 // Drawer Width
@@ -69,6 +70,12 @@ const Dashboard = () => {
                     <li> <Link to={`${url}/myOrders`}>My Orders</Link></li>
                     <li><Link to={`${url}/review`}>Review</Link></li>
                     <li><Button onClick={handleLogOut} variant="text" color="error" >Log Out</Button></li>
+                </ul>
+                <ul>
+                    <li><Link to={`${url}/manageAllOrders`}>Manage All Orders</Link></li>
+                    <li> <Link to={`${url}/addProduct`}>Add A Product</Link></li>
+                    <li><Link to={`${url}/makeAdmin`}>Make Admin</Link></li>
+                    <li><Link to={`${url}/mangeProducts`}>Manage Products</Link></li>
                 </ul>
             </List>
         </div>
@@ -172,7 +179,7 @@ const Dashboard = () => {
 
 
 
-                    {/* ***************************** General User Pages  ******************************/}
+                    {/* ***************************** General User Routes  ******************************/}
                     <div>
                         <Route exact path={path}>Please Select something</Route>
                         <Route path={`${url}/payment`}><Payment></Payment></Route>
@@ -180,11 +187,19 @@ const Dashboard = () => {
                         <Route path={`${url}/review`}><Review></Review></Route>
                     </div>
 
+                    {/* admin */}
+                    <div>
+                        <Route exact path="/">Home</Route>
+                        <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>
+                        <Route path={`${url}/addProduct`}>Add A Product</Route>
+                        <Route path={`${url}/makeAdmin`}><MakeAdmin></MakeAdmin></Route>
+                        <Route path={`${url}/mangeProducts`}>Manage Products</Route>
+                    </div>
 
 
 
 
-                    {/* ***************************** Admin Pages  ******************************/}
+                    {/* ***************************** Admin Routes  ******************************/}
                     {/*  <div>
                         <Route exact path="/">Home</Route>
                         <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>

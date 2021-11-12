@@ -17,7 +17,6 @@ const Reviews = () => {
             .then(data => setRatings(data));
     }, []);
 
-    console.log(ratings)
 
     // CSS for banner
     const custombg = {
