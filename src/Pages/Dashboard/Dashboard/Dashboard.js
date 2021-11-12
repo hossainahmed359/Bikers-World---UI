@@ -32,6 +32,7 @@ import Review from '../UsersSection/Review/Review';
 import Button from '@mui/material/Button';
 import MakeAdmin from '../AdminSection/MakeAdmin/MakeAdmin';
 import DashboardHome from './DashboardHome/DashboardHome';
+import ManageAllOrders from '../AdminSection/ManageAllOrders/ManageAllOrders';
 
 
 // Drawer Width
@@ -91,8 +92,8 @@ const Dashboard = () => {
                         <ul>
                             <li><Link to={`${url}/manageAllOrders`}><span>{taskIcon}</span> Manage All Orders</Link></li>
                             <li> <Link to={`${url}/addProduct`}><span>{plusIcon}</span> Add A Product</Link></li>
-                            <li><Link to={`${url}/makeAdmin`}><span>{userAddIcon}</span> Make Admin</Link></li>
                             <li><Link to={`${url}/mangeProducts`}><span>{productManageIcon}</span> Manage Products</Link></li>
+                            <li><Link to={`${url}/makeAdmin`}><span>{userAddIcon}</span> Make Admin</Link></li>
                         </ul>
                         :
                         <ul>
@@ -185,7 +186,7 @@ const Dashboard = () => {
                     {admin ?
                         <div>
                             {/* Admin */}
-                            <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>
+                            <Route path={`${url}/manageAllOrders`}><ManageAllOrders></ManageAllOrders></Route>
                             <Route path={`${url}/addProduct`}>Add A Product</Route>
                             <Route path={`${url}/makeAdmin`}><MakeAdmin></MakeAdmin></Route>
                             <Route path={`${url}/mangeProducts`}>Manage Products</Route>

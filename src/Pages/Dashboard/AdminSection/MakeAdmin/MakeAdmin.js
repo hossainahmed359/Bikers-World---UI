@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import { Container } from 'react-bootstrap';
+import { Container } from '@mui/material';
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import useAuth from '../../../../Hooks/useAuth';
@@ -52,7 +52,7 @@ const MakeAdmin = () => {
     return (
         <div style={{ fontFamily: 'roboto', textAlign: 'start', margin: '30px' }}>
             <Container>
-                <Grid item xs={12} md={12} lg={4}>
+                <Grid item xs={12} md={12} lg={5}>
                     <h3 style={{ color: '#0A7DD9', marginBottom: '15px' }}>Make Admin</h3>
                     <form onSubmit={handleOnSubmit}>
                         <TextField
