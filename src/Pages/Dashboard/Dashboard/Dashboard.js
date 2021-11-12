@@ -8,12 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -22,17 +17,16 @@ import useAuth from '../../../Hooks/useAuth';
 
 // React Router Components
 import {
-    BrowserRouter as Router,
-    Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
-import { Button } from 'react-bootstrap';
+
+
 import Payment from '../UsersSection/Payment/Payment';
 import MyOrders from '../UsersSection/MyOrders/MyOrders';
 import Review from '../UsersSection/Review/Review';
+import Button from '@mui/material/Button';
 
 
 // Drawer Width
@@ -55,6 +49,14 @@ const Dashboard = () => {
 
     let { path, url } = useRouteMatch();
 
+
+    const handleLogOut = () => {
+        const proceed = window.confirm('Are you sure you want to log out ?');
+        if (proceed) {
+            handleSignOut();
+        }
+    }
+
     // Drawer
     const drawer = (
         <div>
@@ -66,7 +68,7 @@ const Dashboard = () => {
                     <li><Link to={`${url}/payment`}>Pay</Link></li>
                     <li> <Link to={`${url}/myOrders`}>My Orders</Link></li>
                     <li><Link to={`${url}/review`}>Review</Link></li>
-                    <li><Button onClick={handleSignOut} variant="outline-danger">Log Out</Button></li>
+                    <li><Button onClick={handleLogOut} variant="text" color="error" >Log Out</Button></li>
                 </ul>
             </List>
         </div>

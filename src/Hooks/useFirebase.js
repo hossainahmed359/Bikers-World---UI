@@ -15,6 +15,9 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
 
 
+    // Database relate states
+
+
     // AUTH
     const auth = getAuth();
 
@@ -31,7 +34,10 @@ const useFirebase = () => {
                 const destination = location?.state?.from || '/';
                 history.push(destination);
                 setError(null);
-                // const user = result.user;
+
+                // Send data to Database
+                const user = result.user;
+                saveToDb(user.displayName, user.email, 'PUT');
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
@@ -56,7 +62,8 @@ const useFirebase = () => {
                         // Setting User Name on Update Success || Not waiting for observer
                         const newUser = { displayName: name, email: email };
                         setUser(newUser);
-                        history.push('/')
+                        saveToDb(name, email, 'POST');
+                        history.push('/');
                         //
                     }).catch((error) => {
                         setError(error.message)
@@ -118,6 +125,31 @@ const useFirebase = () => {
         });
         return unsubscribed;
     }, []);
+
+
+
+    // Create user in database
+    const saveToDb = (name, email, method) => {
+
+        const user = { displayName: name, email: email };
+
+        // Add User in the database
+        fetch('http://localhost:5000/user', {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId > 0) {
+                    window.alert('Account Successfully created and added to the database')
+                }
+            })
+
+
+    };
 
 
     // Return
