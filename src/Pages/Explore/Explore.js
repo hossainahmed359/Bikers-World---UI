@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navigation from '../Shared/Navigation/Navigation';
 import { Container, Row } from 'react-bootstrap';
 import SingleService from '../Shared/Servies/SingleService/SingleService';
+import Footer from '../Shared/Footer/Footer';
 
 
 const Explore = () => {
@@ -37,6 +38,7 @@ const Explore = () => {
                         ></SingleService>)}
                 </Row>
             </Container>
+            <Footer></Footer>
         </div>
     );
 };
