@@ -15,7 +15,7 @@
     transition: 0.5 ease-in-out;
 }
 .dashboard-navigation a:hover {
-    color: rgb(34, 134, 248);
+    color: #1976D2;
     font-size: 18px;
 }
 .dashboard-navigation span {

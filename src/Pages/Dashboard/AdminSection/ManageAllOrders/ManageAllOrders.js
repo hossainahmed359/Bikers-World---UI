@@ -71,6 +71,7 @@ const ManageAllOrders = () => {
     return (
         <div style={{ fontFamily: 'roboto' }}>
             <h2 style={{ color: '#0A7DD9', margin: '20px 0' }}>Manage Orders</h2>
+            <br />
 
             <TableContainer style={{ border: '1px solid lightgray', padding: '10px 0' }}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">

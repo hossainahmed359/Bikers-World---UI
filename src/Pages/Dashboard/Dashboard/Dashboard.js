@@ -5,7 +5,7 @@ import './Dashboard.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
+// import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -100,7 +100,7 @@ const Dashboard = () => {
             <List>
                 <div className="dashboard-navigation" style={{ overflow: 'hidden' }}>
                     <ul>
-                        <li><Button onClick={handleBackToHome} style={{ margin: '10px -6px' }} ><span>{leftArrowIcon}</span> Back To Home</Button></li>
+                        <li><Button onClick={handleBackToHome} style={{ margin: '10px -6px', marginBottom: '20px' }} ><span>{leftArrowIcon}</span> Back To Home</Button></li>
                         <li><Link to={`${url}`}><span>{homeIcon}</span> Default</Link></li>
                     </ul>
                     {admin ?
@@ -118,7 +118,7 @@ const Dashboard = () => {
                         </ul>
                     }
                     <ul>
-                        <li><Button onClick={handleLogOut} variant="outlined" style={{ marginTop: '10px' }} color="error"><span>{logOutIcon}</span> Log Out</Button></li>
+                        <li><Button onClick={handleLogOut} variant="outlined" style={{ marginTop: '25px' }} color="error"><span>{logOutIcon}</span> Log Out</Button></li>
                     </ul>
                 </div>
             </List>
