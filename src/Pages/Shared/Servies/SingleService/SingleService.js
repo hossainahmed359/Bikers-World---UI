@@ -22,9 +22,9 @@ const SingleService = ({ product }) => {
                     </div>
                     <Card.Body className="text-start">
                         <Card.Title className="fs-3">{name}</Card.Title>
-                        <Card.Text className="fs-2" style={{ color: '#E52727 ' }}>${price}</Card.Text>
-                        <Card.Text style={{ fontFamily: "'roboto" }}>
-                            {description.slice(0, 130)}
+                        <Card.Text className="fs-2" style={{ color: '#E52727' }}>${price}</Card.Text>
+                        <Card.Text style={{ fontFamily: "'roboto", textAlign: 'justify' }}>
+                            {description.slice(0, 130)}...
                         </Card.Text>
                     </Card.Body>
                     <Link to={`/purchase/${_id}`}><Button className="w-50 mx-auto mb-4" variant="danger">

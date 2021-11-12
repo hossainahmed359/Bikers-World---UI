@@ -17,7 +17,7 @@ const SingleReview = ({ sigleRating }) => {
 
 
     return (
-        <div>
+        <div style={{ fontFamily: 'roboto' }}>
             <Col>
                 <Card className="product-card border border-danger">
                     <Card.Img style={{ width: "30%", margin: 'auto', padding: '10px 0' }} variant="top" src={sigleRating?.image} />
