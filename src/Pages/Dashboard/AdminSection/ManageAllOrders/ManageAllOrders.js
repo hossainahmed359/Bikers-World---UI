@@ -32,7 +32,6 @@ const ManageAllOrders = () => {
     }, [reload]);
 
 
-
     // Handle Delete Order
     const handleOrderDelete = orderId => {
         setReload(false)
@@ -50,6 +49,19 @@ const ManageAllOrders = () => {
         }
     };
 
+    // Handle Update Order status
+    const handleUpadateStatus = orderID => {
+        setReload(false)
+        fetch(`http://localhost:5000/updateOrder/${orderID}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    setReload(true);
+                }
+            })
+    };
 
 
     // Font Awesome
@@ -81,8 +93,8 @@ const ManageAllOrders = () => {
                                 <TableCell><span>{singleOrder.name}</span></TableCell>
                                 <TableCell><span>{singleOrder.email}</span></TableCell>
                                 <TableCell><span>{singleOrder.number}</span></TableCell>
-                                <TableCell><span>{singleOrder?.cart?.status}</span></TableCell>
-                                <TableCell><span><Button variant="text" sx={{ fontSize: 24 }}>{checkMark}</Button></span></TableCell>
+                                <TableCell><span className={`${singleOrder?.cart?.status === 'pending' ? "text-warning" : "text-success"}`}>{singleOrder?.cart?.status}</span></TableCell>
+                                <TableCell><span><Button onClick={() => { handleUpadateStatus(singleOrder._id) }} variant="text" sx={{ fontSize: 24 }}>{checkMark}</Button></span></TableCell>
                                 <TableCell ><span><Button onClick={() => { handleOrderDelete(singleOrder._id) }} variant="text" color="error" sx={{ fontSize: 20 }}>{deleteIcon}</Button></span></TableCell>
                             </TableRow>
                         )}

@@ -61,7 +61,7 @@ const SingleOrder = ({ order, handleCancelOrder }) => {
                     </Box>
                     <Box style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
                         <> <Button onClick={() => handleCancelOrder(orderId)} variant="contained" color="error" ><span style={{ marginRight: '5px' }}>{deleteIcon}</span> Cancel</Button></>
-                        <><Typography variant="h6" color="green">{status}</Typography></>
+                        <><Typography variant="h6" className={`${status === 'pending' ? "text-warning" : "text-success"}`}>{status}</Typography></>
                     </Box>
                 </CardContent>
             </Card>

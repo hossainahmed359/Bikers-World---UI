@@ -16,13 +16,14 @@ import useAuth from '../../../Hooks/useAuth';
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faCreditCard, faShoppingCart, faStar, faSignOutAlt, faTasks, faPlusSquare, faUserPlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCreditCard, faShoppingCart, faStar, faSignOutAlt, faTasks, faPlusSquare, faUserPlus, faMinusCircle, faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 // React Router Components
 import {
     Route,
     Link,
-    useRouteMatch
+    useRouteMatch,
+    useHistory
 } from "react-router-dom";
 
 
@@ -45,6 +46,7 @@ const Dashboard = () => {
     // Load Signed In User
     const { user, handleSignOut, admin } = useAuth();
 
+
     // Dashboard Options
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -55,6 +57,17 @@ const Dashboard = () => {
     // Nested Route Options
     let { path, url } = useRouteMatch();
 
+
+    // History
+    const history = useHistory()
+
+    // Go back home 
+    const handleBackToHome = () => {
+        const proceed = window.confirm('Leave Dashboard ?');
+        if (proceed) {
+            history.push('/')
+        }
+    }
 
     // User Sign Out
     const handleLogOut = () => {
@@ -75,17 +88,19 @@ const Dashboard = () => {
     const plusIcon = <FontAwesomeIcon icon={faPlusSquare} />
     const userAddIcon = <FontAwesomeIcon icon={faUserPlus} />
     const productManageIcon = <FontAwesomeIcon icon={faMinusCircle} />
+    const leftArrowIcon = <FontAwesomeIcon icon={faArrowAltCircleLeft} />
 
 
     // Drawer
     const drawer = (
         <div>
-            <Toolbar />
-            <Divider />
+            {/*  <Toolbar />
+            <Divider /> */}
             {/* ****************************************** General User And Admin Links ****************************************** */}
             <List>
                 <div className="dashboard-navigation" style={{ overflow: 'hidden' }}>
                     <ul>
+                        <li><Button onClick={handleBackToHome} style={{ margin: '10px -6px' }} ><span>{leftArrowIcon}</span> Back To Home</Button></li>
                         <li><Link to={`${url}`}><span>{homeIcon}</span> Default</Link></li>
                     </ul>
                     {admin ?

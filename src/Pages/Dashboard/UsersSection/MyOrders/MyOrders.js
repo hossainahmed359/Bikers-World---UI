@@ -49,8 +49,10 @@ const MyOrders = ({ userEmail }) => {
     // Return
     return (
         <Container fixed>
-            <h1>This is My Orders {userEmail}</h1>
-            <h2>Orders {allOrders.length}</h2>
+            <div >
+                <h1 style={{ color: '#E52727 ', margin: '20px 0', fontWeight: '600' }}>My Orders</h1>
+                <h5 style={{ fontFamily: 'roboto', marginTop: '40px', textAlign: 'start' }}>Orders {allOrders.length}</h5>
+            </div>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={{ xs: 2, md: 2 }} columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}>
                     {allOrders.map(order => (
