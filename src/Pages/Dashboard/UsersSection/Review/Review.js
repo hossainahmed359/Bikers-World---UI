@@ -4,7 +4,6 @@ import { Container, Grid, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import useAuth from '../../../../Hooks/useAuth';
 import { Rating } from 'react-simple-star-rating'
-import { fontSize } from '@mui/system';
 
 
 
@@ -13,20 +12,18 @@ const Review = () => {
     // Firebase
     const { user } = useAuth();
 
+    // Overall User Rating
+    const [userRating, setUserRating] = useState({ email: user.email, name: user.displayName })
+
 
     // Star Rating
-    const [rating, setRating] = useState(0) // initial rating value
-
+    const [rating, setRating] = useState(0); // initial rating value
     // Catch Rating value
     const handleRating = (rate) => {
         setRating(rate)
         // Some logic
         userRating.starRating = rating;
-    }
-
-
-    // Overall User Rating
-    const [userRating, setUserRating] = useState({ email: user.email, name: user.displayName })
+    };
 
 
     // Set Descrition Value
@@ -39,11 +36,26 @@ const Review = () => {
     };
 
 
-    // Form Submit
+    // Form Submit || Send data to the server
     const handleOnSubmit = e => {
         e.preventDefault();
         // Include star rating user ratin
         console.log(userRating)
+        fetch('http://localhost:5000/ratings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userRating)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Thank you for your valuable review !')
+                    e.target.reset();
+                }
+            });
     }
 
 
@@ -56,6 +68,7 @@ const Review = () => {
                 <Grid item xs={12} md={12} lg={10} >
                     <form onSubmit={handleOnSubmit}>
                         <TextField
+                            required
                             onBlur={handleOnBlur}
                             name="description"
                             style={{ width: '100%' }}
@@ -63,7 +76,6 @@ const Review = () => {
                             label="Write your experience"
                             multiline
                             rows={4}
-                            defaultValue="Write something"
                         />
                         <Typography style={{ margin: '7px 5px', color: '#E52727' }}>Double click on the star</Typography>
                         <Rating onClick={handleRating} ratingValue={rating} />
