@@ -16,6 +16,7 @@ const useFirebase = () => {
 
 
     // Database relate states
+    const [admin, setAdmin] = useState(false);
 
 
     // AUTH
@@ -152,11 +153,23 @@ const useFirebase = () => {
     };
 
 
+    // Look for admin
+    useEffect(() => {
+        fetch(`http://localhost:5000/checkIsAdmin/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setAdmin(data.isAdmin);
+            })
+
+    }, [user?.email]);
+
+
     // Return
 
     return {
         user,
         error,
+        admin,
         setError,
         isLoading,
         handleGoogleSignIn,

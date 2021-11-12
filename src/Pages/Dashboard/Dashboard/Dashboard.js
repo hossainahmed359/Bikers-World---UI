@@ -1,7 +1,6 @@
 import React from 'react';
 
 // Material UI components
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -28,6 +27,7 @@ import MyOrders from '../UsersSection/MyOrders/MyOrders';
 import Review from '../UsersSection/Review/Review';
 import Button from '@mui/material/Button';
 import MakeAdmin from '../AdminSection/MakeAdmin/MakeAdmin';
+import DashboardHome from './DashboardHome/DashboardHome';
 
 
 // Drawer Width
@@ -38,19 +38,20 @@ const drawerWidth = 200;
 const Dashboard = () => {
 
     // Load Signed In User
-    const { user, handleSignOut } = useAuth();
-    // console.log(user)
+    const { user, handleSignOut, admin } = useAuth();
 
-    // const { window } = props;
+    // Dashboard Options
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
+    // Nested Route Options
     let { path, url } = useRouteMatch();
 
 
+    // User Sign Out
     const handleLogOut = () => {
         const proceed = window.confirm('Are you sure you want to log out ?');
         if (proceed) {
@@ -63,27 +64,35 @@ const Dashboard = () => {
         <div>
             <Toolbar />
             <Divider />
+            {/* ****************************************** General User And Admin Links ****************************************** */}
             <List>
                 <ul>
                     <li><Link to={`${url}`}>Default</Link></li>
-                    <li><Link to={`${url}/payment`}>Pay</Link></li>
-                    <li> <Link to={`${url}/myOrders`}>My Orders</Link></li>
-                    <li><Link to={`${url}/review`}>Review</Link></li>
-                    <li><Button onClick={handleLogOut} variant="text" color="error" >Log Out</Button></li>
                 </ul>
+                {admin ?
+                    <ul>
+                        <li><Link to={`${url}/manageAllOrders`}>Manage All Orders</Link></li>
+                        <li> <Link to={`${url}/addProduct`}>Add A Product</Link></li>
+                        <li><Link to={`${url}/makeAdmin`}>Make Admin</Link></li>
+                        <li><Link to={`${url}/mangeProducts`}>Manage Products</Link></li>
+                    </ul>
+                    :
+                    <ul>
+                        <li><Link to={`${url}/payment`}>Pay</Link></li>
+                        <li> <Link to={`${url}/myOrders`}>My Orders</Link></li>
+                        <li><Link to={`${url}/review`}>Review</Link></li>
+                    </ul>
+                }
                 <ul>
-                    <li><Link to={`${url}/manageAllOrders`}>Manage All Orders</Link></li>
-                    <li> <Link to={`${url}/addProduct`}>Add A Product</Link></li>
-                    <li><Link to={`${url}/makeAdmin`}>Make Admin</Link></li>
-                    <li><Link to={`${url}/mangeProducts`}>Manage Products</Link></li>
+                    <li><Button onClick={handleLogOut} variant="text" color="error" >Log Out</Button></li>
                 </ul>
             </List>
         </div>
     );
 
-    // const container = window !== undefined ? () => window().document.body : undefined;
 
-    // Return
+
+    // *********************** Return ***********************
     return (
         <div>
             {/* Drawer */}
@@ -151,64 +160,24 @@ const Dashboard = () => {
                 >
                     <Toolbar />
 
-
-
-
-                    {/* *********************** General User Links *********************** */}
-                    {/* 
-                    <li><Link to={`${url}`}>Default</Link></li>
-                    <li><Link to={`${url}/payment`}>Pay</Link></li>
-                    <li> <Link to={`${url}/myOrders`}>My Orders</Link></li>
-                    <li><Link to={`${url}/review`}>Review</Link></li>
-                    <li><Button onClick={handleSignOut} variant="outline-danger">Log Out</Button></li>
-                        */}
-
-
-
-
-                    {/* *********************** Admin Links *********************** */}
-                    {/* 
-                    <li><Link to={`${url}`}>Default</Link></li>
-                    <li><Link to={`${url}/manageAllOrders`}>Manage All Orders</Link></li>
-                    <li> <Link to={`${url}/addProduct`}>Add A Product</Link></li>
-                    <li><Link to={`${url}/makeAdmin`}>Make Admin</Link></li>
-                    <li><Link to={`${url}/mangeProducts`}>Manage Products</Link></li>
-                    <li><Button onClick={handleSignOut} variant="outline-danger">Log Out</Button></li>
-                        */}
-
-
-
-
-                    {/* ***************************** General User Routes  ******************************/}
-                    <div>
-                        <Route exact path={path}>Please Select something</Route>
-                        <Route path={`${url}/payment`}><Payment></Payment></Route>
-                        <Route path={`${url}/myOrders`}><MyOrders userEmail={user.email}></MyOrders></Route>
-                        <Route path={`${url}/review`}><Review></Review></Route>
-                    </div>
-
-                    {/* admin */}
-                    <div>
-                        <Route exact path="/">Home</Route>
-                        <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>
-                        <Route path={`${url}/addProduct`}>Add A Product</Route>
-                        <Route path={`${url}/makeAdmin`}><MakeAdmin></MakeAdmin></Route>
-                        <Route path={`${url}/mangeProducts`}>Manage Products</Route>
-                    </div>
-
-
-
-
-                    {/* ***************************** Admin Routes  ******************************/}
-                    {/*  <div>
-                        <Route exact path="/">Home</Route>
-                        <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>
-                        <Route path={`${url}/addProduct`}>Add A Product</Route>
-                        <Route path={`${url}/makeAdmin`}>Make Admin</Route>
-                        <Route path={`${url}/mangeProducts`}>Manage Products</Route>
-                    </div> */}
-
-
+                    {/* ****************************************** General User and Admin Routes ****************************************** */}
+                    <Route exact path={path}><DashboardHome></DashboardHome></Route>
+                    {admin ?
+                        <div>
+                            {/* Admin */}
+                            <Route path={`${url}/manageAllOrders`}>Manage All Orders</Route>
+                            <Route path={`${url}/addProduct`}>Add A Product</Route>
+                            <Route path={`${url}/makeAdmin`}><MakeAdmin></MakeAdmin></Route>
+                            <Route path={`${url}/mangeProducts`}>Manage Products</Route>
+                        </div>
+                        :
+                        <div>
+                            {/* Regular User */}
+                            <Route path={`${url}/payment`}><Payment></Payment></Route>
+                            <Route path={`${url}/myOrders`}><MyOrders userEmail={user.email}></MyOrders></Route>
+                            <Route path={`${url}/review`}><Review></Review></Route>
+                        </div>
+                    }
                 </Box>
             </Box>
         </div>
