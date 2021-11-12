@@ -1,4 +1,5 @@
 import React from 'react';
+import './Dashboard.css'
 
 // Material UI components
 import AppBar from '@mui/material/AppBar';
@@ -13,6 +14,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import useAuth from '../../../Hooks/useAuth';
 
+// Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faCreditCard, faShoppingCart, faStar, faSignOutAlt, faTasks, faPlusSquare, faUserPlus, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 
 // React Router Components
 import {
@@ -31,7 +35,7 @@ import DashboardHome from './DashboardHome/DashboardHome';
 
 
 // Drawer Width
-const drawerWidth = 200;
+const drawerWidth = 250;
 
 
 // ****************************** Main Funciton ******************************
@@ -59,6 +63,19 @@ const Dashboard = () => {
         }
     }
 
+
+    // Font Awesome Icons
+    const homeIcon = <FontAwesomeIcon icon={faHome} />
+    const paymentIcon = <FontAwesomeIcon icon={faCreditCard} />
+    const cartIcon = <FontAwesomeIcon icon={faShoppingCart} />
+    const startIcon = <FontAwesomeIcon icon={faStar} />
+    const logOutIcon = <FontAwesomeIcon icon={faSignOutAlt} />
+    const taskIcon = <FontAwesomeIcon icon={faTasks} />
+    const plusIcon = <FontAwesomeIcon icon={faPlusSquare} />
+    const userAddIcon = <FontAwesomeIcon icon={faUserPlus} />
+    const productManageIcon = <FontAwesomeIcon icon={faMinusCircle} />
+
+
     // Drawer
     const drawer = (
         <div>
@@ -66,29 +83,32 @@ const Dashboard = () => {
             <Divider />
             {/* ****************************************** General User And Admin Links ****************************************** */}
             <List>
-                <ul>
-                    <li><Link to={`${url}`}>Default</Link></li>
-                </ul>
-                {admin ?
+                <div className="dashboard-navigation" style={{ overflow: 'hidden' }}>
                     <ul>
-                        <li><Link to={`${url}/manageAllOrders`}>Manage All Orders</Link></li>
-                        <li> <Link to={`${url}/addProduct`}>Add A Product</Link></li>
-                        <li><Link to={`${url}/makeAdmin`}>Make Admin</Link></li>
-                        <li><Link to={`${url}/mangeProducts`}>Manage Products</Link></li>
+                        <li><Link to={`${url}`}><span>{homeIcon}</span> Default</Link></li>
                     </ul>
-                    :
+                    {admin ?
+                        <ul>
+                            <li><Link to={`${url}/manageAllOrders`}><span>{taskIcon}</span> Manage All Orders</Link></li>
+                            <li> <Link to={`${url}/addProduct`}><span>{plusIcon}</span> Add A Product</Link></li>
+                            <li><Link to={`${url}/makeAdmin`}><span>{userAddIcon}</span> Make Admin</Link></li>
+                            <li><Link to={`${url}/mangeProducts`}><span>{productManageIcon}</span> Manage Products</Link></li>
+                        </ul>
+                        :
+                        <ul>
+                            <li><Link to={`${url}/payment`}><span>{<span>{paymentIcon}</span>}</span> Payment</Link></li>
+                            <li> <Link to={`${url}/myOrders`}><span>{cartIcon}</span> My Orders</Link></li>
+                            <li><Link to={`${url}/review`}><span>{startIcon}</span> Review</Link></li>
+                        </ul>
+                    }
                     <ul>
-                        <li><Link to={`${url}/payment`}>Pay</Link></li>
-                        <li> <Link to={`${url}/myOrders`}>My Orders</Link></li>
-                        <li><Link to={`${url}/review`}>Review</Link></li>
+                        <li><Button onClick={handleLogOut} variant="outlined" style={{ marginTop: '10px' }} color="error"><span>{logOutIcon}</span> Log Out</Button></li>
                     </ul>
-                }
-                <ul>
-                    <li><Button onClick={handleLogOut} variant="text" color="error" >Log Out</Button></li>
-                </ul>
+                </div>
             </List>
         </div>
     );
+
 
 
 

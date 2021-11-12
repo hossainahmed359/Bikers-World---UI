@@ -1,0 +1,23 @@
+.dashboard-navigation ul{ 
+    text-align: start;
+}
+.dashboard-navigation ul li{
+    list-style: none;
+    overflow: hidden;
+    
+}
+.dashboard-navigation a {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: roboto;
+    font-weight: 500;
+    line-height: 35px;
+    transition: 0.5 ease-in-out;
+}
+.dashboard-navigation a:hover {
+    color: rgb(34, 134, 248);
+    font-size: 20px;
+}
+.dashboard-navigation span {
+    margin-right: 5px;
+}
