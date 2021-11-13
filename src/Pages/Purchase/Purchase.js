@@ -31,16 +31,13 @@ const Purchase = () => {
             <Navigation></Navigation>
             <div className="my-5">
                 <Container>
-                    <Row xs={1} md={2} className="d-flex align-items-center" >
-                        <Col sm={12} md={6} lg={4} className="">
+                    <Row xs={1} md={2} lg={2} className="d-flex align-items-center" >
+                        <Col sm={12} md={12} lg={4} className="">
                             <Card className="border-0 d-flex align-item-center">
                                 <Card.Img className="product-banner" variant="top" src={singleProduct.image} />
                             </Card>
                         </Col>
-                        <Col sm={12} md={6} lg={8}>
-                            <Col lg={12}>
-
-                            </Col>
+                        <Col sm={12} md={12} lg={8}>
                             <Col className="mx-auto" lg={10}>
                                 <Card className="border-0">
 
