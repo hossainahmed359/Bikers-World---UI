@@ -17,7 +17,7 @@ const Purchase = () => {
 
     // Get Single Product Details
     useEffect(() => {
-        fetch(`http://localhost:5000/signleProduct/${product_id}`)
+        fetch(`https://pure-badlands-75944.herokuapp.com/signleProduct/${product_id}`)
             .then(res => res.json())
             .then(data => setSingleProduct(data))
     }, []);

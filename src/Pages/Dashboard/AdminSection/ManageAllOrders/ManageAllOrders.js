@@ -24,7 +24,7 @@ const ManageAllOrders = () => {
 
     // Get All orders
     useEffect(() => {
-        fetch(`http://localhost:5000/allOrders/${user.email}`)
+        fetch(`https://pure-badlands-75944.herokuapp.com/allOrders/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
@@ -37,7 +37,7 @@ const ManageAllOrders = () => {
         setReload(false)
         const proceed = window.confirm('Are you sure you want to Delete?');
         if (proceed) {
-            fetch(`http://localhost:5000/deleteOrder/${orderId}`, {
+            fetch(`https://pure-badlands-75944.herokuapp.com/deleteOrder/${orderId}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -52,7 +52,7 @@ const ManageAllOrders = () => {
     // Handle Update Order status
     const handleUpadateStatus = orderID => {
         setReload(false)
-        fetch(`http://localhost:5000/updateOrder/${orderID}`, {
+        fetch(`https://pure-badlands-75944.herokuapp.com/updateOrder/${orderID}`, {
             method: 'PUT'
         })
             .then(res => res.json())

@@ -135,7 +135,7 @@ const useFirebase = () => {
         const user = { displayName: name, email: email };
 
         // Add User in the database
-        fetch('http://localhost:5000/user', {
+        fetch('https://pure-badlands-75944.herokuapp.com/user', {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ const useFirebase = () => {
 
     // Look for admin
     useEffect(() => {
-        fetch(`http://localhost:5000/checkIsAdmin/${user.email}`)
+        fetch(`https://pure-badlands-75944.herokuapp.com/checkIsAdmin/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.isAdmin);

@@ -29,7 +29,7 @@ const SingleOrder = ({ order, handleCancelOrder }) => {
 
     // Find Product With id
     useEffect(() => {
-        fetch(`http://localhost:5000/signleProduct/${productId}`)
+        fetch(`https://pure-badlands-75944.herokuapp.com/signleProduct/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
     }, []);

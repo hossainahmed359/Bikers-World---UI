@@ -41,7 +41,7 @@ const Review = () => {
         e.preventDefault();
         // Include star rating user ratin
         console.log(userRating)
-        fetch('http://localhost:5000/ratings', {
+        fetch('https://pure-badlands-75944.herokuapp.com/ratings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

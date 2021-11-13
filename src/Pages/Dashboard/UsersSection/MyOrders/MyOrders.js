@@ -18,7 +18,7 @@ const MyOrders = ({ userEmail }) => {
 
     // Find All Orders 
     useEffect(() => {
-        fetch(`http://localhost:5000/findOrder/${userEmail}`)
+        fetch(`https://pure-badlands-75944.herokuapp.com/findOrder/${userEmail}`)
             .then(res => res.json())
             .then(data => {
                 setAllOrders(data);
@@ -32,7 +32,7 @@ const MyOrders = ({ userEmail }) => {
         setDeleteConfirm(false);
         const proceed = window.confirm('Are you sure you want to cancel the order ?')
         if (proceed) {
-            fetch(`http://localhost:5000/deleteOrder/${orderId}`, {
+            fetch(`https://pure-badlands-75944.herokuapp.com/deleteOrder/${orderId}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

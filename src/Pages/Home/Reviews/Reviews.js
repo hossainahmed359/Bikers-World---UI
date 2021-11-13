@@ -12,7 +12,7 @@ const Reviews = () => {
 
     // Load Ratings
     useEffect(() => {
-        fetch('http://localhost:5000/ratings')
+        fetch('https://pure-badlands-75944.herokuapp.com/ratings')
             .then(res => res.json())
             .then(data => setRatings(data));
     }, []);
