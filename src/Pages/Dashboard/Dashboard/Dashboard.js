@@ -35,6 +35,7 @@ import MakeAdmin from '../AdminSection/MakeAdmin/MakeAdmin';
 import DashboardHome from './DashboardHome/DashboardHome';
 import ManageAllOrders from '../AdminSection/ManageAllOrders/ManageAllOrders';
 import AddProduct from '../AdminSection/AddProduct/AddProduct';
+import ManageProducts from '../AdminSection/ManageProducts/ManageProducts';
 
 
 // Drawer Width
@@ -205,7 +206,7 @@ const Dashboard = () => {
                             <Route path={`${url}/manageAllOrders`}><ManageAllOrders></ManageAllOrders></Route>
                             <Route path={`${url}/addProduct`}><AddProduct></AddProduct></Route>
                             <Route path={`${url}/makeAdmin`}><MakeAdmin></MakeAdmin></Route>
-                            <Route path={`${url}/mangeProducts`}>Manage Products</Route>
+                            <Route path={`${url}/mangeProducts`}><ManageProducts></ManageProducts></Route>
                         </div>
                         :
                         <div>

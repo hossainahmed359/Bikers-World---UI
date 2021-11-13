@@ -45,12 +45,7 @@ const AddProduct = () => {
 
     return (
         <div style={{ fontFamily: 'roboto' }}>
-            <br />
-            <div>
-                <h2 style={{ color: '#0A7DD9', marginBottom: '15px' }}>ADD PRODUCT</h2>
-            </div>
-            <Container>
-                <br />
+            <Container style={{ marginTop: '50px' }}>
                 <h4 style={{ textAlign: 'start' }}>Product Information</h4>
                 <Grid item xs={12} md={10} lg={7}>
                     <form onSubmit={handleOnSubmit}
