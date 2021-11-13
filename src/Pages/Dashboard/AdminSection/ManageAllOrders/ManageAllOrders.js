@@ -70,7 +70,7 @@ const ManageAllOrders = () => {
 
     return (
         <div style={{ fontFamily: 'roboto' }}>
-            <h2 style={{ color: '#0A7DD9', margin: '20px 0' }}>Manage Orders</h2>
+            <h2 style={{ color: 'black', margin: '20px 0' }}>Manage Orders</h2>
             <br />
 
             <TableContainer style={{ border: '1px solid lightgray', padding: '10px 0' }}>

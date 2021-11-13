@@ -52,8 +52,8 @@ const ManageProducts = () => {
     //
     return (
         <div>
-            <h2 style={{ fontFamily: 'roboto', marginTop: '20px', color: '#1976D2' }}>Manage Products</h2>
-            <Container fixed>
+            <h2 style={{ fontFamily: 'roboto', marginTop: '20px', color: 'black' }}>Manage Products</h2>
+            <Container >
                 <div >
                     <h5 style={{ fontFamily: 'roboto', marginTop: '40px', textAlign: 'start' }}>Total Prodcuts {products.length}</h5>
                 </div>
@@ -68,7 +68,7 @@ const ManageProducts = () => {
                                         image={singleProduct.image}
                                         alt=""
                                     />
-                                    <CardContent style={{ textAlign: 'start' }}>
+                                    <CardContent style={{ textAlign: 'start', fontFamily: 'oswald' }}>
                                         <Typography gutterBottom variant="h5" component="div">
                                             {singleProduct.name}
                                         </Typography >
@@ -85,8 +85,6 @@ const ManageProducts = () => {
                                 </Card>
                             </Grid>
                         )}
-
-
                     </Grid>
                 </Box>
             </Container>

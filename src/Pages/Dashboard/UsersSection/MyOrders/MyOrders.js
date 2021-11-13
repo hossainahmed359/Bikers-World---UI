@@ -50,7 +50,7 @@ const MyOrders = ({ userEmail }) => {
     return (
         <Container fixed>
             <div >
-                <h1 style={{ color: '#E52727 ', margin: '20px 0', fontWeight: '600' }}>My Orders</h1>
+                <h2 style={{ color: 'black', margin: '20px 0', fontWeight: '600', fontFamily: 'poppins' }}>My Orders</h2>
                 <h5 style={{ fontFamily: 'roboto', marginTop: '40px', textAlign: 'start' }}>Orders {allOrders.length}</h5>
             </div>
             <Box sx={{ flexGrow: 1 }}>

@@ -102,19 +102,19 @@ const Dashboard = () => {
             <List>
                 <div className="dashboard-navigation" style={{ overflow: 'hidden' }}>
                     <ul>
-                        <li><Button onClick={handleBackToHome} style={{ margin: '10px -6px', marginBottom: '20px' }} ><span>{leftArrowIcon}</span> Back To Home</Button></li>
+                        <li><Button onClick={handleBackToHome} style={{ margin: '10px -6px', marginBottom: '20px', color: 'black', fontFamily: 'poppins' }} ><span style={{ marginRight: '10px' }}>{leftArrowIcon}</span> Back To Home</Button></li>
                         <li><Link to={`${url}`}><span>{homeIcon}</span> Default</Link></li>
                     </ul>
                     {admin ?
                         <ul>
                             <li><Link to={`${url}/manageAllOrders`}><span>{taskIcon}</span> Manage All Orders</Link></li>
-                            <li> <Link to={`${url}/addProduct`}><span>{plusIcon}</span> Add A Product</Link></li>
+                            <li> <Link to={`${url}/addProduct`}><span style={{ marginRight: '8px' }}>{plusIcon}</span> Add A Product</Link></li>
                             <li><Link to={`${url}/mangeProducts`}><span>{productManageIcon}</span> Manage Products</Link></li>
                             <li><Link to={`${url}/makeAdmin`}><span>{userAddIcon}</span> Make Admin</Link></li>
                         </ul>
                         :
                         <ul>
-                            <li><Link to={`${url}/payment`}><span>{<span>{paymentIcon}</span>}</span> Payment</Link></li>
+                            <li><Link to={`${url}/payment`}><span >{paymentIcon}</span> Payment</Link></li>
                             <li> <Link to={`${url}/myOrders`}><span>{cartIcon}</span> My Orders</Link></li>
                             <li><Link to={`${url}/review`}><span>{startIcon}</span> Review</Link></li>
                         </ul>
