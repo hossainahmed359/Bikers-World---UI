@@ -22,14 +22,14 @@ const NewArrival = () => {
                         <Card className="border-0">
                             <Card.Body className="text-start">
                                 <div>
-                                    <h1 style={{ fontSize: '50px', fontWeight: '600' }}>World's Most</h1>
-                                    <h1 style={{ fontSize: '50px', fontWeight: '600' }}>Powerful Bike</h1>
+                                    <h1 style={{ fontSize: '50px', fontWeight: '600' }}>Our Latest</h1>
+                                    <h1 style={{ fontSize: '50px', fontWeight: '600' }}>Collection</h1>
                                 </div>
                                 <Card.Text className="my-4 pe-5" >
                                     <span style={{ fontSize: '35px', color: '#E52727' }}>$1401.19</span>
                                     <del className="ms-2" style={{ fontSize: '20px', color: 'gray' }}>$1501.19</del>
                                 </Card.Text>
-                                <Card.Text className="my-4 pe-5" style={{ fontSize: '18px', fontFamily: "Poppins", textAlign: 'justify' }}>
+                                <Card.Text className="my-4 pe-5" style={{ fontSize: '20px', fontFamily: "roboto", textAlign: 'justify' }}>
                                     BMW Motorrad was created as a wholly-owned subsidiary of BMW in 1921, to handle building motorcycle and aircraft engines. The first BMW motorcycle was the boxer-engined R32 in 1923, and the company has enjoyed strong European and worldwide sales ever since with a variety of engines and motorcycles.
                                 </Card.Text>
                                 <Button variant="danger rounded-pill py-2 px-3 my-2" style={{ fontFamily: "Poppins" }}>Learn More</Button>

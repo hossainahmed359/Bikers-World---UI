@@ -12,7 +12,7 @@ const Navigation = () => {
 
     return (
         <>
-            <Navbar className="border border-bottom " expand="lg" /* style={{ fontFamily: 'roboto' }} */>
+            <Navbar className="border border-bottom " expand="lg" style={{ fontWeight: '400', fontFamily: 'roboto' }}>
                 <Container fluid className="my-2">
                     <NavLink className="brand-name" to="/home">Bikers World</NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

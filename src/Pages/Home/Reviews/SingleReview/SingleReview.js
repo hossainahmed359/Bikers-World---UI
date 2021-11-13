@@ -22,7 +22,7 @@ const SingleReview = ({ sigleRating }) => {
                 <Card className="product-card border border-danger">
                     <Card.Img style={{ width: "30%", margin: 'auto', padding: '10px 0' }} variant="top" src={sigleRating?.image} />
                     <Card.Body className="text-start">
-                        <Card.Title>{name}</Card.Title>
+                        <Card.Title style={{ fontSize: '25px', fontWeight: '500', textAlign: 'start', marginBottom: '10px' }}>{name}</Card.Title>
                         <Card.Text style={{ fontFamily: 'roboto' }}>
                             {description.slice(0, 200)}
                         </Card.Text>
