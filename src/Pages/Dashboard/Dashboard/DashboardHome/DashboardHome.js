@@ -17,7 +17,7 @@ const DashboardHome = () => {
     const { user, admin } = useAuth();
 
     // Nested Route Options
-    let { path, url } = useRouteMatch();
+    let { url } = useRouteMatch();
 
 
     return (
