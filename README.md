@@ -3,7 +3,7 @@
 
 ### About this website
 
-- Website Purpose :  This is a nice motorcycle shop related website.
+- Website Purpose :  This is a niche motorcycle shop related website.
 - Responsiveness: This is a desktop, tablet, mobile flexible website . So user can feel free to visit this website from any device 
 - User Options : Users can see items and browse the freeley without login or registration
 - Front End Technology :  This website uses React as a front end library . 
